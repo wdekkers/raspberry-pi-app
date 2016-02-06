@@ -35,18 +35,18 @@ class GPIO{
     return $this;
   }
 
-  /**
+  /* *
   * Write a pin value to GPIO
   *
   * @since   2016-02-05
   * @author  Wesley Dekkers <wesley@wd-media.nl>
-  **/
+  **
   public function list(){
 
     //system("gpio readall");
 
     return $user_preferences;
-  }
+  }*/
 
   /**
   * Write a pin value to GPIO
