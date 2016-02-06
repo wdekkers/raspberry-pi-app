@@ -1,0 +1,20 @@
+{
+  "name": "Raspberry Pi Multi Purpose App",
+  "version": "0.0.0",
+  "description": "A Front end with a API to control power outlets, rfid power outlets, measure temperature and more",
+  "scripts": {
+    "postinstall": "composer install; composer update; if [ ! -f etc/database-connections.json ]; then cp etc/conf_sample/database-connections.json.sample etc/database-connections.json; fi; if [ ! -f etc/core-widget.definition.json ]; then cp etc/conf_sample/core-widget.definition.json.sample etc/core-widget.definition.json; fi;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://whtevn@bitbucket.org/sdicgdev/core-widget.git"
+  },
+  "author": "Wesley Dekkers",
+  "license": "",
+  "devDependencies": {
+    "jasmine": "^2.3.2",
+    "jasmine-spec-reporter": "^2.4.0",
+    "q": "^1.4.1",
+    "routest": "^0.3.0"
+  }
+}
