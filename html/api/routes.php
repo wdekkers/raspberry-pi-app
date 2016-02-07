@@ -8,6 +8,9 @@
 /***************/
 $router->mount('/gpio', function() use ($router) {
 
+  // List ALL GPIO ports
+  $router->get('/','\Controllers\GPIOCtl::list');
+
   // GPIO Write command :pin :value (0/1)
   $router->put('/write/(\S+)/(\S+)/','\Controllers\GPIOCtl::write');
 

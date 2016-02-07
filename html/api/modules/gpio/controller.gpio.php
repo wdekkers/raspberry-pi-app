@@ -13,6 +13,11 @@ namespace Controllers;
 */
 class GPIOCtl{
 
+  public function list(){
+    $list_gpio = new \Models\GPIO();
+
+    echo json_encode($list_gpio->list());
+  }
   /**
   * Write a pin value
   * <pre class="POST"> GET [url]/gpio/write/:pin/:value/</pre>
@@ -36,11 +41,11 @@ class GPIOCtl{
         throw new \Exception("Pin and Value should both be numeric", 1);
       }
 
-      $write = new \Models\GPIO();
-      $write->pin = $pin;
-      $write->value = $value;
+      $write_gpio = new \Models\GPIO();
+      $write_gpio->pin = $pin;
+      $write_gpio->value = $value;
 
-      $write->write();
+      $write_gpio->write();
 
       echo \Rhonda\Success:: create();
     }catch(\Exception $e){
@@ -71,11 +76,11 @@ class GPIOCtl{
         throw new \Exception("Pin should be numeric", 1);
       }
 
-      $mode = new \Models\GPIO();
-      $mode->pin = $pin;
-      $mode->value = $value;
+      $mode_gpio = new \Models\GPIO();
+      $mode_gpio->pin = $pin;
+      $mode_gpio->value = $value;
 
-      $mode->mode();
+      $mode_gpio->mode();
 
       echo \Rhonda\Success:: create();
     }catch(\Exception $e){
