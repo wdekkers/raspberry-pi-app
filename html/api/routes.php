@@ -41,9 +41,14 @@ $router->mount('/switch', function() use ($router) {
 /*****************/
 $router->mount('/sensor', function() use ($router) {
 
-  // Set the switch on / off
+  // Get temperature by sensor id
   $router->get('/temperature/(\S+)/','\Controllers\I2cCtl::get_temperature');
+
+  // Get average temperature by sensor id's
+  $router->post('/temperature/','\Controllers\I2cCtl::temperature_multiple');
 });
+
+
 
 
 $router->options('/(\S+)','');
