@@ -49,7 +49,7 @@ class I2c{
     exec("cat {$this->path}{$this->id}/w1_slave", $this->sensor);
     $sensor_info = explode('t=', $this->sensor);
     $sensor->celsius = $sensor_info[1]/1000;
-    $sensor->fahrenheit = this->celcius_to_fahrenheit($sensor->celsius);
+    $sensor->fahrenheit = $this->celcius_to_fahrenheit($sensor->celsius);
 
     return $sensor;
   }
