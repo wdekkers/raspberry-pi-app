@@ -70,10 +70,10 @@ class I2cCtl{
       $count = count($body);
       error_log($count);
 
-      foreach($body as $sensor){
+      foreach($body as $sensor_id){
         $sensor = new \Models\I2c();
-        error_log(print_r($sensor,true));
-        $sensor->id = $sensor[0];
+        error_log(print_r($sensor_id,true));
+        $sensor->id = $sensor_id;
         $sensor->path = $config->BUS_PATH;
 
         $temp = $sensor->get_temperature();
