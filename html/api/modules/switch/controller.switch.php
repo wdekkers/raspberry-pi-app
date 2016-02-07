@@ -48,11 +48,11 @@ class SwitchCtl{
       # Decide what to do
       if($value == 'ON'){
         $set_gpio->mode = 'OUT';
-        $set_gpio->status = 1;
+        $set_gpio->status = 0;
       }
       elseif($value == 'OFF'){
         $set_gpio->mode = 'IN';
-        $set_gpio->status = 0;
+        $set_gpio->status = 1;
       }
       else{
         throw new \Exception("No valid pin value entered");
