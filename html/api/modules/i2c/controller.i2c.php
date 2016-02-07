@@ -72,6 +72,7 @@ class I2cCtl{
 
       foreach($body as $sensor){
         $sensor = new \Models\I2c();
+        error_log(print_r($sensor,true));
         $sensor->id = $sensor[0];
         $sensor->path = $config->BUS_PATH;
 
