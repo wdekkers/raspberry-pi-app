@@ -59,8 +59,8 @@ class SwitchCtl{
       }
       
       // Execute the commands
-      $set_gpio->write();
       $set_gpio->mode();
+      $set_gpio->write();
 
       // Reload the pin
       echo json_encode($set_gpio->get());
