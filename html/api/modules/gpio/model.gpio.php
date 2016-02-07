@@ -84,7 +84,7 @@ class GPIO{
 
     foreach($all_gpio as $pin){
       error_log('=='.$pin->pin."---".$this->wiringpi_pin);
-      if($pin->pin == $this->wiringpi_pin){
+      if($pin->pin == $this->pin){
         error_log(print_r($pin,true));
         return $pin;
       }
@@ -98,8 +98,8 @@ class GPIO{
   * @author  Wesley Dekkers <wesley@wd-media.nl>
   **/
   public function write(){
-    error_log("gpio write {$this->pin} {$this->status}");
-    system("gpio write {$this->pin} {$this->status}");
+    error_log("gpio -g write {$this->pin} {$this->status}");
+    system("gpio -g write {$this->pin} {$this->status}");
 
     # Future return check readall to see if change was executed correctly
   }
@@ -111,8 +111,8 @@ class GPIO{
   * @author  Wesley Dekkers <wesley@wd-media.nl>
   **/
   public function mode(){
-    error_log("gpio mode {$this->pin} {$this->mode}");
-    system("gpio mode {$this->pin} {$this->mode}");
+    error_log("gpio -g mode {$this->pin} {$this->mode}");
+    system("gpio -g mode {$this->pin} {$this->mode}");
 
     # Future return check readall to see if change was executed correctly
   }
