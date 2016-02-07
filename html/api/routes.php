@@ -42,7 +42,7 @@ $router->mount('/switch', function() use ($router) {
 $router->mount('/sensor', function() use ($router) {
 
   // Set the switch on / off
-  $router->put('/temperature/(\S+)/','\Controllers\I2cCtl::get_temperature');
+  $router->get('/temperature/(\S+)/','\Controllers\I2cCtl::get_temperature');
 });
 
 
