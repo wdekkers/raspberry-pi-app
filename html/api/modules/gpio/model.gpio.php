@@ -80,11 +80,11 @@ class GPIO{
   }
 
   public function get(){
-    $all = $this->read_all();
-    $pin_status = '';
+    $all_gpio = $this->read_all();
 
-    foreach($all as $pin){
+    foreach($all_gpio as $pin){
       if($pin->pin == $this->pin){
+        error_log(print_r($pin,true));
         return $pin;
       }
     }
