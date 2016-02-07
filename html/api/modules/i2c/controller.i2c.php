@@ -77,7 +77,7 @@ class I2cCtl{
         $sensor->path = $config->BUS_PATH;
 
         $temp = $sensor->get_temperature();
-        error_log("eacht temp ".$celcius);
+        error_log(print_r($temp,true));
         $celcius = $celcius + $temp->celcius;
         $fahrenheit = $fahrenheit + $temp->fahrenheit;
       }
