@@ -25,6 +25,7 @@ $router = new \Bramus\Router\Router();
 // Define controllers
 include 'modules/gpio/controller.gpio.php';
 include 'modules/rfid/controller.rfid.php';
+include 'modules/switch/controller.switch.php';
 
 // Define models
 include 'modules/gpio/model.gpio.php';

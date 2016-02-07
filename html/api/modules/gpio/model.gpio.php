@@ -13,7 +13,8 @@ namespace Models;
 class GPIO{
 
   public $pin;
-  public $value;
+  //public $value;
+  //public $status
 
   function __construct($props=null) {
     if(isset($props)) {
@@ -78,15 +79,26 @@ class GPIO{
     return $all_gpio;
   }
 
+  public function get(){
+    $all = $this->read_all();
+    $pin_status = '';
+
+    foreach($all as $pin){
+      if($pin->pin == $this->pin){
+        return $pin;
+      }
+    }
+  }
+
   /**
-  * Write a pin value to GPIO
+  * Write a pin status to GPIO
   *
   * @since   2016-02-05
   * @author  Wesley Dekkers <wesley@wd-media.nl>
   **/
   public function write(){
-    error_log("gpio write {$this->pin} {$this->value}");
-    system("gpio write {$this->pin} {$this->value}");
+    error_log("gpio write {$this->pin} {$this->status}");
+    system("gpio write {$this->pin} {$this->status}");
 
     # Future return check readall to see if change was executed correctly
   }
@@ -98,8 +110,8 @@ class GPIO{
   * @author  Wesley Dekkers <wesley@wd-media.nl>
   **/
   public function mode(){
-    error_log("gpio mode {$this->pin} {$this->value}");
-    system("gpio mode {$this->pin} {$this->value}");
+    error_log("gpio mode {$this->pin} {$this->mode}");
+    system("gpio mode {$this->pin} {$this->mode}");
 
     # Future return check readall to see if change was executed correctly
   }
