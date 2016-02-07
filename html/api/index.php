@@ -11,14 +11,6 @@ require __DIR__ . '/../../vendor/autoload.php';
 
 \Rhonda\Config:: load_file("config","../../etc/config.json");
 
-\Rhonda\Config:: load_file("config","../../etc/config.json");
-\Rhonda\Config:: load_file("config","../../etc/config.json");
-
-\Rhonda\Config:: load_file("config","../../etc/config.json");
-\Rhonda\Config:: load_file("config","../../etc/config.json");
-\Rhonda\Config:: load_file("config","../../etc/config.json");
-
-
 // Create Router instance
 $router = new \Bramus\Router\Router();
 
@@ -26,10 +18,12 @@ $router = new \Bramus\Router\Router();
 include 'modules/gpio/controller.gpio.php';
 include 'modules/rfid/controller.rfid.php';
 include 'modules/switch/controller.switch.php';
+include 'modules/i2c/controller.i2c.php';
 
 // Define models
 include 'modules/gpio/model.gpio.php';
 include 'modules/rfid/model.rfid.php';
+include 'modules/i2c/model.i2c.php';
 
 // Define routes
 require 'routes.php';
