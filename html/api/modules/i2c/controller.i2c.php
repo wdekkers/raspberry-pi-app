@@ -65,7 +65,7 @@ class I2cCtl{
       // Load post body
       $body = \Rhonda\RequestBody:: get();
 
-      $celcius = 0;
+      $celsius = 0;
       $fahrenheit = 0;
       $count = count($body);
       error_log($count);
@@ -78,12 +78,12 @@ class I2cCtl{
 
         $temp = $sensor->get_temperature();
         error_log(print_r($temp,true));
-        $celcius = $celcius + $temp->celcius;
+        $celsius = $celsius + $temp->celsius;
         $fahrenheit = $fahrenheit + $temp->fahrenheit;
       }
 
       $average = new \stdClass();
-      $average->celcius = $celcius / $count;
+      $average->celsius = $celsius / $count;
       $average->fahrenheit = $fahrenheit / $count;
 
 
