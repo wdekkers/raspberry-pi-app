@@ -46,8 +46,8 @@ class I2c{
     $sensor = new \stdClass();
 
     // Load the data out of the sensor
-    error_log('cat {$this->path}{$this->id}/w1_slave');
-    exec("cat {$this->path}{$this->id}/w1_slave", $this->sensor);
+    error_log("cat ".{$this->path}."".{$this->id}."/w1_slave");
+    exec("cat ".$this->path."".$this->id."/w1_slave", $this->sensor);
     $sensor_info = explode('t=', $this->sensor);
     error_log(print_r($sensor_info,true));
     $sensor->celsius = $sensor_info[1]/1000;
