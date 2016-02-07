@@ -83,6 +83,7 @@ class GPIO{
     $all_gpio = $this->read_all();
 
     foreach($all_gpio as $pin){
+      error_log('=='.$pin->pin."---".$this->pin);
       if($pin->pin == $this->pin){
         error_log(print_r($pin,true));
         return $pin;
