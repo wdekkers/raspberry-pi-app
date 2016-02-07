@@ -72,7 +72,7 @@ class I2cCtl{
 
       foreach($body as $sensor){
         $sensor = new \Models\I2c();
-        $sensor->id = $id;
+        $sensor->id = $sensor;
         $sensor->path = $config->BUS_PATH;
 
         $temp = $sensor->get_temperature();
