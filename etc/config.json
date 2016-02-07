@@ -1,3 +1,4 @@
 {
-  "RFID_PATH": "/var/www/html/rfoutlet/codesend "
+  "RFID_PATH": "/var/www/html/rfoutlet/codesend ",
+  "BUS_PATH": "/sys/bus/w1/devices/"
 }

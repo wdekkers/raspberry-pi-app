@@ -36,6 +36,15 @@ $router->mount('/switch', function() use ($router) {
   $router->put('/set/(\S+)/(\S+)/','\Controllers\SwitchCtl::set');
 });
 
+/*****************/
+/* SENSOR Routes */
+/*****************/
+$router->mount('/sensor', function() use ($router) {
+
+  // Set the switch on / off
+  $router->put('/temperature/(\S+)/','\Controllers\I2cCtl::get_temperature');
+});
+
 
 $router->options('/(\S+)','');
 

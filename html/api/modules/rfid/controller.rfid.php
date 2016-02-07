@@ -15,7 +15,7 @@ class RFIDCtl{
 
   /**
   * Write a pin value
-  * <pre class="POST"> GET [url]/gpio/write/:pin/:value/</pre>
+  * <pre class="PUT"> PUT [url]/gpio/write/:pin/:value/</pre>
   *
   * @param String - pin number
   * @param String - value
