@@ -15,9 +15,8 @@ class GPIOCtl{
 
   public function read_all(){
     $read_all = new \Models\GPIO();
-    $gpio = $read_all->read_all;
 
-    echo json_encode($gpio);
+    echo json_encode($read_all->read_all());
   }
   /**
   * Write a pin value

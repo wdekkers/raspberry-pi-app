@@ -43,10 +43,10 @@ class GPIO{
   **/
   public function read_all(){
 
-    exec('gpio readall', $readall);
+    exec('gpio readall', $this->gpio);
 
     $all_gpio = array();
-    foreach($readall as $row){
+    foreach($this->gpio as $row){
       $row = explode("|", $row);
       // Because there could be two GPIO pins in two lines we check for two values
       // And we filter out the pins like ground and voltage
