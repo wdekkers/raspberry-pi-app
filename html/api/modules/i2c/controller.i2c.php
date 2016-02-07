@@ -36,7 +36,7 @@ class I2cCtl{
       $sensor->id = $id;
       $sensor->path = $config->BUS_PATH;
 
-      echo json_encode($sensor->get());
+      echo json_encode($sensor->get_temperature());
     }catch(\Exception $e){
       echo \Rhonda\Error:: handle($e);
     }
