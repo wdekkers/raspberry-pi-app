@@ -22,7 +22,7 @@ class SwitchCtl{
   * Switch pin ON / OFF
   * <pre class="PUT"> PUT [url]/switch/set/:pin/:value/</pre>
   *
-  * @param String - pin number
+  * @param String - pin number (wPi pin)
   * @param String - value (ON/OFF)
   *
   * @example

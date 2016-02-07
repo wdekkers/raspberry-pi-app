@@ -39,7 +39,7 @@ class GPIOCtl{
   * Write a pin status
   * <pre class="PUT"> PUT [url]/gpio/write/:pin/:status/</pre>
   *
-  * @param String - pin number
+  * @param String - pin number (wPi pin)
   * @param String - status
   *
   * @example
@@ -74,7 +74,7 @@ class GPIOCtl{
   * Set a pin mode
   * <pre class="PUT"> PUT [url]/gpio/mode/:pin/:mode/</pre>
   *
-  * @param String - pin number
+  * @param String - pin number (wPi pin)
   * @param String - mode IN/OUT (or others)
   *
   * @example

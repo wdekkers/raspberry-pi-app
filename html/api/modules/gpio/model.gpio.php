@@ -84,8 +84,7 @@ class GPIO{
 
     foreach($all_gpio as $pin){
       error_log('=='.$pin->pin."---".$this->wiringpi_pin);
-      if($pin->pin == $this->pin){
-        error_log(print_r($pin,true));
+      if($pin->pin == $this->wiringpi_pin){
         return $pin;
       }
     }
