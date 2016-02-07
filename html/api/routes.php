@@ -33,7 +33,7 @@ $router->mount('/rfid', function() use ($router) {
 $router->mount('/switch', function() use ($router) {
 
   // Set the switch on / off
-  $router->put('/set/(\S+)/(\S+)/','\Controllers\SwitchCtl::send');
+  $router->put('/set/(\S+)/(\S+)/','\Controllers\SwitchCtl::set');
 });
 
 
