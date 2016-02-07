@@ -45,7 +45,37 @@ class GPIO{
 
     exec('gpio readall', $readall);
 
-    return $readall;
+    $all_gpio = array();
+    foreach($readall as $row){
+      $row = explode("|", $row);
+      // Because there could be two GPIO pins in two lines we check for two values
+      // And we filter out the pins like ground and voltage
+      if(is_numeric(trim($row[1]))){
+        $pin = new \stdClass();
+        $pin->pin = trim($row[1]);
+        $pin->wiringpi_pin = trim($row[2]);
+        $pin->name = trim($row[3]);
+        $pin->mode = trim($row[4]);
+        $pin->value = trim($row[5]);
+        $pin->bord_number = trim($row[6]);
+
+        $all_gpio[] = $pin;
+      }
+
+      if(is_numeric(trim($row[13]))){
+        $pin = new \stdClass();
+        $pin->pin = trim($row[13]);
+        $pin->wiringpi_pin = trim($row[12]);
+        $pin->name = trim($row[11]);
+        $pin->mode = trim($row[10]);
+        $pin->value = trim($row[9]);
+        $pin->bord_number = trim($row[8]);
+
+        $all_gpio[] = $pin;
+      }
+    }
+
+    return $all_gpio;
   }
 
   /**
