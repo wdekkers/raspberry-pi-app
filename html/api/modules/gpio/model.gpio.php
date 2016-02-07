@@ -41,7 +41,7 @@ class GPIO{
   * @since   2016-02-05
   * @author  Wesley Dekkers <wesley@wd-media.nl>
   **/
-  public function list(){
+  public function read_all(){
 
     exec('gpio readall', $readall);
 

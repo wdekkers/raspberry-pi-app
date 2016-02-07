@@ -13,10 +13,10 @@ namespace Controllers;
 */
 class GPIOCtl{
 
-  public function list(){
-    $list_gpio = new \Models\GPIO();
+  public function read_all(){
+    $read_all = new \Models\GPIO();
 
-    echo json_encode($list_gpio->list());
+    echo json_encode($read_all->read_all());
   }
   /**
   * Write a pin value
