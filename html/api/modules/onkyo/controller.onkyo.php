@@ -32,7 +32,7 @@ class OnkyoCtl{
 
     $onkyo = new \Models\Onkyo();
 
-    $command = $onkyo->send_ISCP($fp, $config->command_code . $config->command_params);
+    $config = $onkyo->send_ISCP($fp, $config->command_code . $config->command_params);
     @fclose($fp);
     if($command) {
       $config->message = 'Success';
