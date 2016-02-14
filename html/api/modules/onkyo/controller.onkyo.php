@@ -99,7 +99,7 @@ public function command($type){
       $body->param = min($body->param, 64);
       $body->param = str_pad($body->param, 2, '0', STR_PAD_LEFT);
     }
-    $set = $onkyo->set($fp, $config);
+    $set = $onkyo->set($fp, $body);
     if(!$set){
       throw new \Exception("Failed to send request");
     }
