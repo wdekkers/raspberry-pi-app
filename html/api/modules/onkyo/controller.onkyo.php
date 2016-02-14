@@ -23,7 +23,7 @@ class OnkyoCtl{
   public function detect(){
     try{
       $config = new \stdClass();
-      $config->command = '!xECN';
+      $config->code = '!xECN';
       $config->param = 'QSTN';
       $config->error_code = 0;
 
