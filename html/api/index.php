@@ -25,6 +25,7 @@ include 'modules/onkyo/controller.onkyo.php';
 include 'modules/gpio/model.gpio.php';
 include 'modules/rfid/model.rfid.php';
 include 'modules/i2c/model.i2c.php';
+include 'modules/onkyo/model.onkyo.php';
 
 // Define routes
 require 'routes.php';
