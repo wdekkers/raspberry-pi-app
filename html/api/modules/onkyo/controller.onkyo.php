@@ -83,7 +83,8 @@ public function command($type){
     */
     error_log(print_r($body, true));
     $socket = 'tcp://'.$body->ip.':'.$body->port;
-    $fp = @stream_socket_client($socket, '', '', 10);
+    error_log($socket);
+    $fp = \@stream_socket_client($socket, '', '', 10);
     if(!$fp) {
       throw new \Exception("Failed to make a connection");
     }
