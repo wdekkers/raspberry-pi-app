@@ -32,7 +32,7 @@ class OnkyoCtl{
 
     $onkyo = new \Models\Onkyo();
 
-    $config = $onkyo->send_ISCP($fp, $config->command_code . $config->command_params);
+    $command = $onkyo->send_ISCP($fp, $config->command_code . $config->command_params);
     @fclose($fp);
     if($command) {
       $config->message = 'Success';
@@ -41,7 +41,7 @@ class OnkyoCtl{
       throw new \Exception("No receiver detected");
     }
 
-    echo json_encode($config);
+    echo json_encode($command);
   }
 
   
