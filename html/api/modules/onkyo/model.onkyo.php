@@ -89,7 +89,7 @@ class Onkyo{
 
   public function set($fp, $config) {
      try{
-      $request = $config->code . $config->param;
+      $request = $config->type . $config->param;
       $length = strlen($request) + 3;
 
       $command  = "ISCP\x00\x00\x00\x10\x00\x00\x00" . chr($length) . "\x01\x00\x00\x00!1" . $request . "\x0D";
@@ -97,7 +97,7 @@ class Onkyo{
       $config->reply = @fread($fp, 100);
       $config->reply_len = \ord($config->reply[11]) - 5;
       
-      $config->status_reply = ltrim(substr($reply, 18, $config->reply_len), $config->code);
+      $config->status_reply = ltrim(substr($reply, 18, $config->reply_len), $config->type);
       error_log('HWLLOOWOOWOW');
       @fclose($fp);
       return $config;
