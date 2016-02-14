@@ -19,6 +19,7 @@ include 'modules/gpio/controller.gpio.php';
 include 'modules/rfid/controller.rfid.php';
 include 'modules/switch/controller.switch.php';
 include 'modules/i2c/controller.i2c.php';
+include 'modules/onkyo/controller.onkyo.php';
 
 // Define models
 include 'modules/gpio/model.gpio.php';

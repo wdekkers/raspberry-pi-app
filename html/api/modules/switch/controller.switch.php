@@ -13,11 +13,20 @@ namespace Controllers;
 */
 class SwitchCtl{
 
+  /**
+  * Load GPIO pins from the raspberry pi
+  *
+  * @return Return
+  *
+  * @since   2016-02-13
+  * @author  Wesley Dekkers <wesley@wd-media.nl> 
+  **/
   public function get(){
     $get = new \Models\GPIO();
 
     echo json_encode($read_all->read_all());
   }
+  
   /**
   * Switch pin ON / OFF
   * <pre class="PUT"> PUT [url]/switch/set/:pin/:value/</pre>

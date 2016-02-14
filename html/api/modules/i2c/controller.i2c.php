@@ -68,16 +68,13 @@ class I2cCtl{
       $celsius = 0;
       $fahrenheit = 0;
       $count = count($body);
-      error_log($count);
 
       foreach($body as $sensor_id){
         $sensor = new \Models\I2c();
-        error_log(print_r($sensor_id,true));
         $sensor->id = $sensor_id;
         $sensor->path = $config->BUS_PATH;
 
         $temp = $sensor->get_temperature();
-        error_log(print_r($temp,true));
         $celsius = $celsius + $temp->celsius;
         $fahrenheit = $fahrenheit + $temp->fahrenheit;
       }
