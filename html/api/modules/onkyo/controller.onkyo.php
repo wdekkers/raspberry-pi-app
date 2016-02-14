@@ -24,7 +24,7 @@ class OnkyoCtl{
 
     $config = new \stdClass();
     $config->command_code = '!xECN';
-    $config->command_params = 'QSTN');
+    $config->command_params = 'QSTN';
     $config->error_code = 0;
 
     $fp = \socket_create(AF_INET, SOCK_DGRAM, SOL_UDP); 
