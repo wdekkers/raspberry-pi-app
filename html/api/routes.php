@@ -56,8 +56,8 @@ $router->mount('/onkyo', function() use ($router) {
   // Get temperature by sensor id
   $router->get('/detect/','\Controllers\OnkyoCtl::detect');
 
-  // Get average temperature by sensor id's
- // $router->post('/temperature/','\Controllers\I2cCtl::temperature_multiple');
+  // Execute the command to the onkyo
+  $router->post('/command/(\S+)/','\Controllers\OnkyoCtl::command');
 });
 
 

@@ -49,8 +49,9 @@ class Onkyo{
   * @since   2016-01-01
   * @author  Wesley Dekkers <wesley@sdicg.com> 
   **/
-  public function send_ISCP($fp, $request, $config) {
+  public function send($fp, $config = false) {
      try{
+      $request = $config->code . $config->param;
       $length = strlen($request) + 1;
       $command  = "ISCP\x00\x00\x00\x10\x00\x00\x00" . chr($length) . "\x01\x00\x00\x00" . $request . "\x0D";
       
@@ -65,20 +66,43 @@ class Onkyo{
         sleep(1);
       }
       $reply_len = ord($buff[11]);
-      $config->statusReply = substr($buff, 21, $reply_len);
-      $info = explode('/', $config->statusReply);
-      $config->modelName = $info[0];
-      $config->modelIP = $from;
-      $config->modelPort = $info[1];
+      $config->status = substr($buff, 21, $reply_len);
+      $info = explode('/', $config->status);
+      $config->name = $info[0];
+      $config->ip = $from;
+      $config->port = $info[1];
       $config->model_country = $this->code_to_country($info[2]);
       $config->model_mac = join(':', str_split(substr($info[3], 0, 12), 2));
       $config->success = $status;
+
+
+      @fclose($fp);
 
       return $config;
     }catch(\Exception $e){
       echo \Rhonda\Error:: handle($e);
     }
   }
+
+  public function set($fp, $config) {
+     try{
+      $request = $config->code . $config->param;
+      $length = strlen($request) + 3;
+
+      $command  = "ISCP\x00\x00\x00\x10\x00\x00\x00" . chr($length) . "\x01\x00\x00\x00!1" . $request . "\x0D";
+      $config->status = @fwrite($fp, $command) > 0 ? true : false;
+      $config->reply = @fread($fp, 100);
+      $config->reply_len = \ord($config->reply[11]) - 5;
+      
+      $arrData['statusReply'] = ltrim(substr($reply, 18, $config->reply_len), $config->code);
+      @fclose($fp);
+      return $config;
+    }catch(\Exception $e){
+      echo \Rhonda\Error:: handle($e);
+    }
+  }
+
+
 
   /**
   * Get the country of the receiver
@@ -91,7 +115,6 @@ class Onkyo{
   * @author  Wesley Dekkers <wesley@wd-media.nl> 
   **/
   public function code_to_country($code) {
-    
     try{
       switch ($code) {
         case 'DX':
