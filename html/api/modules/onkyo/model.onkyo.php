@@ -51,6 +51,9 @@ class Onkyo{
   **/
   public function send($fp, $config = false) {
      try{
+      if(!$config->code || !$config->param){
+        throw new \Exception("Missing parameters code/param");
+      }
       $request = $config->code . $config->param;
       $length = strlen($request) + 1;
       $command  = "ISCP\x00\x00\x00\x10\x00\x00\x00" . chr($length) . "\x01\x00\x00\x00" . $request . "\x0D";
@@ -94,7 +97,8 @@ class Onkyo{
       $config->reply = @fread($fp, 100);
       $config->reply_len = \ord($config->reply[11]) - 5;
       
-      $arrData['statusReply'] = ltrim(substr($reply, 18, $config->reply_len), $config->code);
+      $config->status_reply = ltrim(substr($reply, 18, $config->reply_len), $config->code);
+      error_log('HWLLOOWOOWOW');
       @fclose($fp);
       return $config;
     }catch(\Exception $e){
