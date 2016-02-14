@@ -24,13 +24,13 @@ class OnkyoCtl{
 
     $config = new \stdClass();
     $config->command_code = '!xECN';
-    $config->command_params = preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['param']);
+    $config->command_params = 'QSTN');
     $config->error_code = 0;
 
     $fp = \socket_create(AF_INET, SOCK_DGRAM, SOL_UDP); 
     \socket_set_option($fp, SOL_SOCKET, SO_BROADCAST, 1); 
 
-    $command = $this->sendISCP($fp, $config->command_code . $config->command_params);
+    $command = $this->send_ISCP($fp, $config->command_code . $config->command_params);
     @fclose($fp);
     if($command) {
       $config->error_message = 'Success';
