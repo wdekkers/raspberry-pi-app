@@ -71,29 +71,11 @@ public function command($type){
 
     $onkyo = new \Models\Onkyo();
 
-    /*
-    $arrData = array(
-    'cmdCode' => preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['cmd']),
-    'cmdParam' => preg_replace('/[^-a-zA-Z0-9_]/', '', $_GET['param']),
-    'ipAddress' => $_GET['ip'],
-    'portNumber' => (int)$_GET['port'],
-    'errCode' => 0,
-    'errMessage' => '',
-    );
-    */
-    error_log(print_r($body, true));
     $socket = 'tcp://'.$body->ip.':'.$body->port;
-    error_log($socket);
-    /*$fp = @stream_socket_client($socket, 0, '', 10);
-    if(!$fp) {
-      throw new \Exception("Failed to make a connection");
-    }*/
-
     $fp = stream_socket_client($socket, $errno, $errstr, 30);
     if (!$fp) {
         echo "$errstr ($errno)<br />\n";
     }
-    error_log('here maybe ?');
     
     if($body->type == 'MVL') {
       $body->param = min($body->param, 64);

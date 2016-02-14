@@ -57,7 +57,7 @@ $router->mount('/onkyo', function() use ($router) {
   $router->get('/detect/','\Controllers\OnkyoCtl::detect');
 
   // Execute the command to the onkyo
-  $router->post('/command/(\S+)/','\Controllers\OnkyoCtl::command');
+  $router->PUT('/command/(\S+)/','\Controllers\OnkyoCtl::command');
 });
 
 
