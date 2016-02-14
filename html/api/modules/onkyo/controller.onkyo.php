@@ -86,7 +86,7 @@ public function command($type){
     if(!$fp = @stream_socket_client($socket, '', '', 10)) {
       throw new \Exception("Failed to make a connection");
     }
-
+    error_log('here maybe ?');
     
     if($body->type == 'MVL') {
       $body->param = min($body->param, 64);
