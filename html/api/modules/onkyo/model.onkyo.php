@@ -79,7 +79,7 @@ class Onkyo{
       $config->success = $status;
 
 
-      @fclose($fp);
+      fclose($fp);
 
       return $config;
     }catch(\Exception $e){
@@ -93,13 +93,12 @@ class Onkyo{
       $length = strlen($request) + 3;
 
       $command  = "ISCP\x00\x00\x00\x10\x00\x00\x00" . chr($length) . "\x01\x00\x00\x00!1" . $request . "\x0D";
-      $body->status = @fwrite($fp, $command) > 0 ? true : false;
-      $body->reply = @fread($fp, 100);
+      $body->status = fwrite($fp, $command) > 0 ? true : false;
+      $body->reply = fread($fp, 100);
       $body->reply_len = \ord($body->reply[11]) - 5;
       
-      $body->status_reply = ltrim(substr($reply, 18, $body->reply_len), $body->type);
-      error_log('HWLLOOWOOWOW');
-      @fclose($fp);
+      $body->status_reply = ltrim(substr($body->reply, 18, $body->reply_len), $body->type);
+      fclose($fp);
       return $body;
     }catch(\Exception $e){
       echo \Rhonda\Error:: handle($e);
